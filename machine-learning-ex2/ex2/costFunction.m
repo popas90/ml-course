@@ -22,8 +22,8 @@ grad = zeros(size(theta));
 
 htheta = sigmoid(theta' .* X);
 
-J = (-y .* log(htheta) .- (1 .- y) .* log(1 .- htheta)) ./ m ;
-grad = ((htheta .- y) .* X) ./ m ;
+J = (sum(-y .* log(htheta) .- (1 .- y) .* log(1 .- htheta)) / m)' ;
+grad = sum((htheta .- y) .* X) / m ;
 
 
 
