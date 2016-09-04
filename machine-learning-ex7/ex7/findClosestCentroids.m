@@ -20,7 +20,16 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
+for i=1:rows(X)
+    for k=1:K
+        for j=1:columns(X)
+            proj(j)=(X(i,j)-centroids(k,j)).^2;
+        end
+        dist(k) = sum(proj);
+    end
+    [val, poz] = min(dist);
+    idx(i) = poz;
+end
 
 
 

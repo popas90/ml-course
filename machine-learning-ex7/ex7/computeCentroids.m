@@ -25,7 +25,25 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
+% m - nummber of examples
+% n - number of parameters per point
+% K - number of centroids
 
+for k=1:K
+    current = zeros(1,n);
+    members = 0;
+    for j=1:m
+        if idx(j) == k
+            current = current + X(j,:);
+            members = members + 1;
+        end
+    end
+    if members > 0
+        centroids(k,:) = current ./ members;
+    else
+        centroids(k,:) = zeros(1,n);
+    end
+end
 
 
 
